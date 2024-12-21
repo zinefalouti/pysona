@@ -1,0 +1,54 @@
+{% extends "core/layout.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<h1>Personas | <span>Total: {{total}}</span></h1>
+
+<div class="row">
+    {% if page_obj %}
+    {% for persona in page_obj %}
+    <div class="col-12 col-md-6 col-lg-3">
+        <div class="pwidget">
+            {% if persona.thumbnail %}
+              <img src="{{ persona.thumbnail.url }}" alt="Persna Thumbnail" class="personathumb"/>
+            {% else %}
+              <img src="{% static 'images/profile.jpg' %}" alt="Persna Thumbnail" class="personathumb"/>
+            {% endif %}
+            <h4>Persona</h4>
+            <h2>{{persona.name}}</h2>
+            <a href="{% url 'personasingle' id=persona.id %}">View Persona</a>
+            <div class="pedit">
+                <a href="{% url 'personasingle' id=persona.id %}"><img src="{% static 'images/edit.png' %}" alt="Edit Persona"/></a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+       <div class="col-12">
+          <div class="pwidget">
+              <img src="{% static 'images/oops.png' %}" alt="Oops" class="oops"/>
+              <h1><b>Sorry!</b></h1>
+              You have no personas for the moment. Why don't you <a href="{% url 'addpersona' %}">Create One?</a>
+          </div>
+       </div>
+    {% endif %}
+</div>
+
+{% if page_obj %}
+<div class="row">
+    <div class="col-12">
+        {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number}}" class="pprev">Previous</a>
+        {% endif %}
+
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}" class="pnext">Next</a>
+        {% endif %}
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "core/layout.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<h1>Projects: | <span>Total: {{total}}</span></h1>
+
+
+{% if page_obj %}
+<div class="row">
+   {% for project in page_obj %}
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="projectblock">
+                <img src="{% static 'images/projecticon.png' %}" alt="{{project.title}}"/>
+                <h5>Project</h5>
+                <h3>{{ project.title }}</h3>
+                <div class="passigned">Assigned Personas: <span>{{ project.passigned }}</span></div>
+                <a href="{% url 'projectsingle' id=project.id %}">View Project</a>
+                <div class="pedit">
+                    <a href="{% url 'projectsingle' id=project.id %}"><img src="{% static 'images/edit.png' %}" alt="Edit Project"/></a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% else %}
+    <div class="row">
+      <div class="col-12">
+          <div class="pwidget">
+              <img src="{% static 'images/oops.png' %}" alt="Oops" class="oops"/>
+              <h1><b>Sorry!</b></h1>
+              You have no projects for the moment. Why don't you <a href="{% url 'addproject' %}">Create One?</a>
+          </div>
+       </div>
+    </div>
+{% endif %}
+
+{% if page_obj %}
+<div class="row">
+    <div class="col-12" style="margin-top:20px;">
+        {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number}}" class="pprev">Previous</a>
+        {% endif %}
+
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}" class="pnext">Next</a>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

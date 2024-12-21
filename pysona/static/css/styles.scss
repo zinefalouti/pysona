@@ -1,0 +1,615 @@
+/* Importing Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+/* Color Variables */
+$background : #F6F6F6;
+$highlight: #21CAF9;
+$text: #000000;
+$dark: #000000;
+$gray: #D9D9D9;
+$white: #ffffff;
+
+/* Functions to ease up building the UI later on */
+
+@mixin divGeom($pt,$pb,$pr,$pl,$mt,$mb){
+    
+    padding-top:$pt;
+    padding-bottom:$pb;
+    padding-right:$pr;
+    padding-left:$pl;
+    margin-top:$mt;
+    margin-bottom:$mb;
+
+}
+
+@mixin textMaker($size,$transform,$letters,$weight,$color){
+    font-size:$size;
+    text-transform: $transform;
+    letter-spacing: $letters;
+    font-weight:$weight;
+    color:$color;
+}
+
+@mixin buttonMaker($bg,$width){
+    background:$bg;
+    width:$width;
+    border-radius:5px;
+    border:none;
+    outline:none;
+    @include divGeom(10px,10px ,20px ,20px ,10px ,10px );
+}
+
+
+/* Styling starts here */
+
+body{
+    background-color: $background ;
+    font-family: Poppins;
+    color: $dark;
+}
+
+.hero{
+    background: url('../images/herobg.jpg');
+    background-size:cover;
+    @include divGeom(20px,20px ,0px ,0px ,0px ,0px );
+
+    button{
+        @include buttonMaker($dark,100% );
+        @include textMaker(0.83rem,uppercase ,4px ,700 ,$white );
+    }
+
+    button:hover{
+        background-color: $highlight;
+        color:$dark;
+        transition: 0.6s ease-in-out;
+    }
+
+}
+
+.logo{
+    width:100%;
+}
+
+
+.heromenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    nav {
+        display: flex;
+
+        ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            margin: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            outline: none;
+            color: $dark;
+            font-weight: 400;
+            transition: color 0.6s ease-in-out;
+        }
+        
+        a:hover {
+            color: $highlight;
+        }
+    }
+}
+
+
+.hamburger{
+    width:70px;
+    height:auto;
+    display:flex;
+    margin-left:auto;
+    margin-top:20px;
+}
+
+.hamburger:hover{
+    scale:1.063;
+    transition:0.43s ease-in-out;
+}
+
+.mobile-menu {
+
+    position:absolute;
+    top:0;
+    left:0;
+    background-color: $dark;
+    width:100%;
+    z-index:6;
+    height:100%;
+    padding-top:40px;
+    padding-bottom:40px;
+
+    ul{
+        list-style: none;
+    }
+
+    li{
+        text-align: left;
+        margin-top:40px;
+        margin-bottom:40px;
+
+        a{
+            @include textMaker(1.36rem,uppercase ,6px ,700 ,$white );
+            text-decoration: none;
+           
+        }
+
+        a:hover{
+            color:$highlight;
+            transition: 0.43s ease-in-out;
+        }
+    }
+
+}
+
+.close-menu {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: $highlight;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+
+.heromid{
+    text-align: center;
+    margin-top:9%;
+
+    p{
+        margin-top:20px;
+    }
+}
+
+h1{
+    @include textMaker(2.23rem,none ,0 ,400 ,$dark );
+    span{
+        font-weight:700;
+    }
+}
+
+p{
+    @include textMaker(1.23rem,none ,0 ,400 ,$dark );
+}
+
+
+.heroaction{
+    margin-top:40px;
+    margin-bottom:40px;
+    button{
+        @include buttonMaker($dark,190px );
+    }
+
+    .buttonsec{
+        background:$highlight;
+        width:190px;
+        color:$dark;
+    }
+
+    .buttonsec:hover{
+        background-color: $dark;
+        color:$white;
+        transition: 0.6s ease-in-out;
+    }
+}
+
+.dashboards{
+    width:100%;
+    margin-bottom:0px;
+}
+
+.dashboards:hover{
+    scale:1.063;
+    transition: 0.43s ease-in-out;
+}
+
+.about{
+    text-align: center;
+    @include divGeom(30px,30px ,20px ,20px ,20px ,20px );
+
+    h1{
+        margin-bottom:20px;
+    }
+
+    img{
+        width:30vw;
+        margin-top:20px;
+    }
+
+    img:hover{
+        scale:1.063;
+        transition: 0.6s ease-in-out;
+    }
+}
+
+.registeract{
+    background-color: $dark;
+    color:$white;
+    border-radius: 10px;
+    @include divGeom(30px,30px ,40px ,40px ,0px ,20px );
+    -webkit-box-shadow: 4px 4px 63px 0px rgba(0,0,0,0.16);
+    -moz-box-shadow: 4px 4px 63px 0px rgba(0,0,0,0.16);
+    box-shadow: 4px 4px 63px 0px rgba(0,0,0,0.16);
+
+    h1{
+        color:$white;
+        margin-top:20px;
+    }
+
+    p{
+        color:$white;
+        margin-top:20px;
+        font-weight:400;
+    }
+
+    button{
+        @include buttonMaker($highlight,230px );
+        margin-top:20px;
+        @include textMaker(1rem,uppercase ,4px ,700 ,$dark );
+    }
+
+    button:hover{
+        scale:1.063;
+        transition: 0.6s ease-in-out;
+    }
+
+    img{
+        width:70%;
+    }
+
+    .regarrow{
+        width:160px;
+        margin-right:20px;
+    }
+
+    
+}
+
+.fcont{
+    display:flex;
+    justify-content: space-between;
+}
+
+.feature{
+    background-color: $white;
+    -webkit-box-shadow: 4px 4px 63px 0px rgba(0,0,0,0.16);
+    -moz-box-shadow: 4px 4px 63px 0px rgba(0,0,0,0.16);
+    box-shadow: 4px 4px 63px 0px rgba(0,0,0,0.16);
+    @include divGeom(30px,30px ,30px ,30px ,0px ,20px );
+    border-top:6px solid $dark;
+    border-radius: 10px;
+    flex:1;
+
+    img{
+        width:103px;
+        height:auto;
+    }
+
+    h2{
+        margin-top:20px;
+    }
+
+    p{
+        font-size:1rem;
+        margin-top:10px;
+    }
+
+    .minbutton{
+        width:45px;
+        height:auto;
+        cursor:pointer;
+    }
+
+    .minbutton:hover{
+        scale:1.13;
+        transition: 0.43s ease-in-out;
+    }
+
+}
+
+.feature:hover{
+    transform: translateY(-30px);
+    transition: 0.6s ease-in-out;
+}
+
+
+.halfsec{
+    margin-top:40px;
+    margin-bottom:20px;
+
+    img{
+        width:100%;
+        height:auto;
+    }
+
+    img:hover{
+        scale:1.063;
+        transition: 0.6s ease-in-out;
+    }
+
+    h1{
+        margin-top:50px;
+    }
+
+    p{
+        margin-top:20px;
+        font-size:1rem;
+    }
+
+    .halfseccontent{
+        background-color: $white;
+        @include divGeom(20px,20px ,40px ,40px ,0px ,0px );
+        border-radius: 10px;
+    }
+
+}
+
+
+.footer{
+    background-color: $dark;
+    color:$white;
+    @include divGeom(40px,40px ,20px ,20px ,40px ,0px );
+    text-align:center;
+
+    h4{
+        @include textMaker(0.83rem,uppercase ,3px ,400 ,$white );
+        margin-top:20px;
+    }
+
+    .buttonsec{
+        border:2px solid $highlight;
+        @include textMaker(0.83rem,uppercase ,3px ,700 ,$highlight );
+        background-color: transparent;
+        border-radius:5px;
+        @include divGeom(5px,5px ,20px ,20px ,20px ,20px );
+        width:160px;
+        margin-right:20px;
+    }
+    .buttonsec:hover{
+        background-color: $highlight;
+        color:$dark;
+        transition: 0.6s ease-in-out;
+    }
+
+    button{
+        background-color: $highlight;
+        color:$dark;
+        @include textMaker(0.83rem,uppercase ,3px ,700 ,$dark );
+        border-radius: 5px;
+        @include divGeom(7px,7px ,20px ,20px ,20px ,20px );
+        width:160px;
+        border:none;
+    }
+
+    button:hover{
+        scale:1.063;
+        transition: 0.6s ease-in-out;
+    }
+}
+
+.gate{
+    background-color: $white;
+    @include divGeom(0px,0px ,0px ,0px , 30px ,30px );
+    border-radius:10px;
+    -webkit-box-shadow: 4px 4px 63px 0px rgba(0,0,0,0.16);
+    -moz-box-shadow: 4px 4px 63px 0px rgba(0,0,0,0.16);
+    box-shadow: 4px 4px 63px 0px rgba(0,0,0,0.16);
+}
+
+.gateinner{
+    @include divGeom(30px,30px ,30px ,30px ,0px ,0px );
+
+    img{
+        width:160px;
+    }
+    label{
+        margin-top:20px;
+    }
+
+    input[type="submit"]{
+        margin-top:40px;
+    }
+
+    h1{
+        margin-top:40px;
+    }
+}
+
+.gatebg{
+    width:100%;
+    height:auto;
+}
+
+input{
+    background-color: $background;
+    border:1px solid $gray;
+    width:100%;
+    @include divGeom(5px,5px ,15px ,15px ,10px ,10px );
+    @include textMaker(1rem,none ,0 ,400 ,$dark );
+    outline:none;
+    border-radius:5px;
+}
+
+input:focus{
+    border:3px solid $highlight;
+}
+
+input[type="submit"]{
+     background-color: $highlight;
+     border:none;
+     width:190px;
+     @include divGeom(10px,10px ,15px ,15px ,10px ,10px );
+     @include textMaker(1rem,uppercase ,4px ,700 ,$dark );
+}
+
+input[type="submit"]:hover{
+    background-color: $dark;
+    color:$white;
+    transition: 0.6s ease-in-out;
+}
+
+label{
+    @include textMaker(0.73rem,uppercase ,4px ,700 ,$dark );
+}
+
+.gatefooter{
+    @include textMaker(0.73rem,uppercase ,3px ,700 ,$dark );
+    margin-top:20px;
+
+    a{
+        color:$highlight;
+        text-decoration: none;
+    }
+
+    a:hover{
+        color:$gray;
+        transition: 0.6s ease-in-out;
+    }
+}
+
+.backbtn{
+    width:76px;
+    height:auto;
+}
+
+.backbtn:hover{
+    scale:1.063;
+    transition: 0.6s ease-in-out;
+}
+
+
+.onboarding{
+    background-color: $white;
+    -webkit-box-shadow: 4px 4px 63px 0px rgba(0,0,0,0.16);
+    -moz-box-shadow: 4px 4px 63px 0px rgba(0,0,0,0.16);
+    box-shadow: 4px 4px 63px 0px rgba(0,0,0,0.16);
+    border-radius:10px;
+    @include divGeom(40px,40px ,30px ,30px ,40px ,0px );
+
+    button{
+        @include buttonMaker($highlight,190px );
+        @include textMaker(1rem,uppercase ,3px ,700 ,$dark );
+        margin-right:30px;
+    }
+
+    button:hover{
+        background-color: $dark;
+        color:$white;
+        transition: 0.6s ease-in-out;
+    }
+
+}
+
+.onboardprogress{
+    display:flex;
+    justify-content: flex-end;
+    width:100%;
+    .active{
+        background-color: $highlight;
+    }
+}
+
+.prbar{
+  width:103px;
+  height:10px;
+  border-radius:40px;
+  background-color: $gray;
+  margin-left:20px;  
+  margin-top:30px; 
+}
+
+
+.onboardhead{
+    display:flex;
+    justify-content: space-between;
+    margin-top:20px;
+
+    h4{
+        @include textMaker(1rem,uppercase ,4px ,700 ,$gray );
+    }
+
+    h2{
+        @include textMaker(2rem, uppercase ,0px ,700 ,$gray );
+        margin-top: 15px;
+    }
+}
+
+.onboardbody{
+    background-color: $background;
+    border-radius: 10px;
+    @include divGeom(30px,30px ,20px ,20px ,15px ,20px );
+    display:flex;
+    align-items: center;
+    gap:40px;
+    height:auto;
+
+    p{
+        @include textMaker(1.13rem,none ,0px ,400 ,$dark );
+    }
+
+    img{
+        width:260px;
+    }
+}
+
+
+
+
+
+// Media Queries for Tablet
+@media (max-width: 1024px) {
+    .about{
+
+        img{
+            width:60vw;
+        }
+    }
+}
+
+// Media Queries for Mobile
+@media (max-width: 768px) {
+    .about{
+
+        img{
+            width:70vw;
+        }
+    }
+
+    .onboardbody{
+
+        display:block;
+        text-align: center;
+    
+        p{
+            margin-bottom:30px;
+        }
+    
+        img{
+            width:70%;
+        }
+    }
+
+    .onboardhead{
+        display:block;
+    
+        h4{
+            margin-top:20px;
+        }
+    
+    }
+    
+}

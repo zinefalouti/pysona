@@ -1,0 +1,88 @@
+{% extends "core/layout.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<input type="hidden" value="{{id}}" id="projectid"/>
+
+<div class="row">
+    <div class="col-12">
+        <div class="blockhead">
+           <a href="{% url 'allprojects' %}"><img src="{% static 'images/backbtn.png' %}" alt="Back Button"/></a>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+   <div class="col-12 col-md-7">
+      <div class="block">
+         <div class="blocktitle" id="head">
+             
+         </div>
+         <div class="inputzone" id="desc" style="margin-top:20px;">
+         </div>
+         <div class="row">
+           <div class="col-12 col-md-6">
+              <div class="inputzone" id="complexity">
+              </div>
+           </div>
+           <div class="col-12 col-md-6">
+              <div class="inputzone" id="type">
+              </div>
+           </div>
+         </div>       
+         <div class="inputzone" id="link">
+         </div>
+         <div class="blocktitle" id="footer">
+              <div>
+                 {% if user.thumbnail %}
+                    <img src="{{ user.thumbnail.url }}" alt="Profile Thumbnail" class="profilethumbmin"/>
+                {% else %}
+                    <img src="{% static 'images/profile.jpg' %}" alt="Default Profile Thumbnail" class="profilethumbmin"/>
+                {% endif %}
+                Created by: <span>{{ user.username|title }}</span>
+              </div>
+              <div class="iconswrapper" id="date">
+              </div>
+         </div>
+             
+    </div>
+   </div>
+   <div class="col-12 col-md-5">
+      <div class="block">
+        <div class="blocktitle" id="head">
+             <label>Assigned Personas</label>
+              <div class="icons-wrapper">
+                <span id="assignedtotal">3</span>
+              </div>
+         </div>
+         <hr/>
+         <div class="persona-wrapper" id="assigned">
+         </div>
+         <div class="assignbottom" id="assignbottom">
+         </div>
+      </div>
+   </div>
+</div>
+
+
+<!-- Assign Persona Modal Block -->
+<div class="modalblock d-none" id="modalblock">
+      <div class="modal-body">
+         <div class="modalhead">
+            <h1>Assign Personas: </h1>
+            <a href="#" id="closemodal"><img src="{% static 'images/close.png' %}" class="closemodal" alt="Close Modal"/></a>
+         </div>
+         <hr/>
+         <div class="modal-units">
+           <div class="row" id="modalunits">
+           </div>
+         </div>
+         <div id="pagination"></div>
+      </div>   
+</div>
+
+<script src="{% static 'js/project.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "core/layout.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<input type="hidden" value="{{id}}" id="personaid"/>
+
+<div class="row">
+    <div class="col-12">
+        <div class="blockhead" id="name">
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12 col-md-8 d-flex">
+        <div class="block">
+            <div class="row">
+                <div class="col-12 col-md-6 d-flex">
+                   <div class="inputzone centering" id="profilethumb">
+                   </div>
+                </div>
+                <div class="col-12 col-md-6">
+                     <div class="inputzone" id="age">
+                     </div>
+                     <div class="inputzone" id="occup">
+                     </div>
+                     <div class="inputzone" id="location">
+                     </div>
+                     <div class="inputzone" id="status">
+                     </div>
+                </div>
+            </div>
+            <div class="inputzone" id="education">
+            </div>
+            <div class="inputzone" id="background">
+            </div>
+
+            <!-- Action Buttons-->
+            <div class="blockactions"> 
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-4">
+        <div class="block">
+          <label>Assigned to</label>
+          <h2><span>{{total}}</span> Projects</h2>
+        </div>
+        <div class="block">
+            <div class="inputzone" id="techsav">
+            </div>
+           <div class="inputzone" id="effic">
+            </div>
+            <div class="inputzone" id="curio">
+            </div>
+            <div class="inputzone" id="techintuit">
+            </div>
+            <div class="inputzone" id="techexpert">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="{% static 'js/persona.js' %}"></script>
+
+{% endblock %}

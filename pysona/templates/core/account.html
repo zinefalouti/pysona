@@ -1,0 +1,31 @@
+{% extends "core/layout.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<h1>Edit Your Account: </h1>
+
+<div class="row">
+   <div class="col-12 col-lg-8">
+       <div class="block">
+          <div class="inputzone" id="username">
+          </div>
+          <div class="inputzone" id="email">
+          </div>
+          <div class="inputzone" id="password">
+          </div>
+          <div id="action"></div>
+       </div>
+   </div>
+   <div class="col-12 col-lg-4">
+       <div class="block">
+          <div class="inputzone" id="thumbnail">
+          </div>
+       </div>
+   </div>
+</div>
+
+
+<script src="{% static 'js/account.js' %}"></script>
+{% endblock %}

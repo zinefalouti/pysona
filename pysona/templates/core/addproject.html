@@ -1,0 +1,126 @@
+{% extends "core/layout.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="blockhead">
+           <h1>Create a new project:</h1>
+           <a href="{% url 'allprojects' %}"><img src="{% static 'images/backbtn.png' %}" alt="Back Button"/></a>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    {% if message %}
+        <div class="col-12 mt-4">
+            <div class="alert alert-danger" role="alert">
+                {{message}}
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<form action="{% url 'checkaddproject' %}" method="POST">
+    {% csrf_token %}
+
+<div class="row">
+    <div class="col-12 col-md-7">
+        <div class="block">
+            <div class="inputzone">
+               <label>Project title</label>
+               <input type="text" placeholder="Example: Web app, mobile app, or software name" name="title" required/>
+               <input type="hidden" name="assigned" id="assigned"/>
+            </div>
+            <div class="inputzone">
+               <label>Project description</label>
+               <textarea placeholder="Describe your digital product" name="desc" required></textarea>
+            </div>
+            <div class="row">
+               <div class="col-12 col-md-6">
+                    <div class="inputzone">
+                        <label>Project UX Complexity</label>
+                        <select name="complexity" required>
+                                <option value="0">Very Easy</option>
+                                <option value="1">Easy</option>
+                                <option value="2">Moderately Easy</option>
+                                <option value="3">Slightly Challenging</option>
+                                <option value="4">Average Difficulty</option>
+                                <option value="5">Moderate</option>
+                                <option value="6">Moderately Hard</option>
+                                <option value="7">Challenging</option>
+                                <option value="8">Very Challenging</option>
+                                <option value="9">Very Difficult</option>
+                                <option value="10">Hardcore</option>
+                            </select>
+                    </div>
+               </div>
+               <div class="col-12 col-md-6">        
+                    <div class="inputzone">
+                        <label>Project Type</label>
+                        <select name="type" required>
+                                <option value="Creative">Creative</option>
+                                <option value="Technical">Technical</option>
+                                <option value="Business">Business</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Management">Management</option>
+                        </select>
+                    </div>
+               </div>
+            </div>
+            <div class="inputzone">
+               <label>Prototype, alpha, or live url (optional)</label>
+               <input type="url" placeholder="Example: https://myproduct.com/" name="url"/>
+            </div>
+            <input type="submit" value="Publish Project"/>
+            
+       </div>
+       <div class="block" style="padding:20px;">
+           <div class="row">
+               <div class="col-12 col-md-4 col-lg-2">
+                  <img src="{% static 'images/info.png'  %}" alt="Auto Scoring" style="width:60px; height:auto;"/>
+               </div>
+               <div class="col-12 col-md-8 col-lg-10">
+                   <b>Pysona</b> will <b>auto-score</b> your selected Personas <b>automatically</b>, 
+                   but you can edit them manually later on if you wish to.</b>
+               </div>
+           </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-5">
+          <div class="block centering" id="persocont">
+             <h2>Assign Personas<h2>
+             <img src="{% static 'images/personaicon.png' %}" alt="Persona Icon" class="personaicon"/>
+             <p style="padding:20px;">
+              You can assign personas now or come back to this step later. Your project will always be ready when you are!
+             </p>
+             <a href="#" id="pluscircle"><img src="{% static 'images/addcircle.png' %}" alt="Assign Persona" class="addcircle"/></a>
+          </div>
+    </div>
+</div>
+</form>
+
+
+<!-- Assign Persona Modal -->
+<div class="modalblock d-none" id="modalblock">
+      <div class="modal-body">
+         <div class="modalhead">
+            <h1>Assign Personas: </h1>
+            <a href="#" id="closemodal"><img src="{% static 'images/close.png' %}" class="closemodal" alt="Close Modal"/></a>
+         </div>
+         <hr/>
+         <div class="modal-units">
+           <div class="row" id="modalunits">
+           </div>
+         </div>
+         <div id="pagination"></div>
+      </div>   
+</div>
+
+
+<script src="{% static 'js/assign.js' %}"></script>
+
+{% endblock %}

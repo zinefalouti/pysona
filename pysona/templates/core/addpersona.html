@@ -1,0 +1,171 @@
+{% extends "core/layout.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="blockhead">
+           <h1>Create a new persona:</h1>
+           <a href="{% url 'allpersonas' %}"><img src="{% static 'images/backbtn.png' %}" alt="Back Button"/></a>
+        </div>
+    </div>
+</div>
+
+
+<form action="{% url 'checkaddpersona' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+<div class="row">
+    
+    {% if message %}
+        <div class="col-12 mt-4">
+            <div class="alert alert-danger" role="alert">
+                {{message}}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="col-12 col-lg-8">
+        <div class="block">
+            <div class="inputzone">
+                <label>Persona Name</label>
+                <input type="text" name="pname" placeholder="Example: Jane Doe" required/>
+            </div>
+            <div class="inputzone">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <label>Age</label>
+                        <input type="number" placeholder="21" name="age" min="0" required/>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <label>Marital Status</label>
+                        <select name="pstatus" required>
+                            <option value="Single">Single</option>
+                            <option value="Divorced">Divorced</option>
+                            <option value="Married">Married</option>
+                            <option value="Widowed">Widowed</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="inputzone">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <label>Location (City, State)</label>
+                        <input type="text" placeholder="Boston, MA" name="plocation" required/>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <label>Occupation</label>
+                        <input type="text" placeholder="Example: Actor" name="poccup" required/>
+                    </div>
+                </div>
+            </div>
+            <div class="inputzone">
+                <label>Education</label>
+                <input type="text" name="peduc" placeholder="Example: None" required/>
+            </div>           
+            <div class="inputzone">
+                <label for="thumbnail">Persona Image (Optional)</label>
+                <input type="file" name="pthumb" accept="image/*"><br>
+            </div>        
+            <div class="inputzone">
+                <label>Background</label>
+                <textarea name="pback" placeholder="Tell us more about your UX Persona..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-4">
+        <div class="block">
+            <div class="inputzone">
+                <label>Tech Savvy</label>
+                <select name="techsav" required>
+                    <option value="0">0/10</option>
+                    <option value="1">1/10</option>
+                    <option value="2">2/10</option>
+                    <option value="3">3/10</option>
+                    <option value="4">4/10</option>
+                    <option value="5">5/10</option>
+                    <option value="6">6/10</option>
+                    <option value="7">7/10</option>
+                    <option value="8">8/10</option>
+                    <option value="9">9/10</option>
+                    <option value="10">10/10</option>
+                </select>
+            </div>
+            <div class="inputzone">
+                <label>Efficiency</label>
+                <select name="effic" required>
+                    <option value="0">0/10</option>
+                    <option value="1">1/10</option>
+                    <option value="2">2/10</option>
+                    <option value="3">3/10</option>
+                    <option value="4">4/10</option>
+                    <option value="5">5/10</option>
+                    <option value="6">6/10</option>
+                    <option value="7">7/10</option>
+                    <option value="8">8/10</option>
+                    <option value="9">9/10</option>
+                    <option value="10">10/10</option>
+                </select>
+            </div>
+            <div class="inputzone">
+                <label>Curiosity</label>
+                <select name="curio" required>
+                    <option value="0">0/10</option>
+                    <option value="1">1/10</option>
+                    <option value="2">2/10</option>
+                    <option value="3">3/10</option>
+                    <option value="4">4/10</option>
+                    <option value="5">5/10</option>
+                    <option value="6">6/10</option>
+                    <option value="7">7/10</option>
+                    <option value="8">8/10</option>
+                    <option value="9">9/10</option>
+                    <option value="10">10/10</option>
+                </select>
+            </div>
+            <div class="inputzone">
+                <label>Tech Intuition</label>
+                <select name="techintuit" required>
+                    <option value="0">0/10</option>
+                    <option value="1">1/10</option>
+                    <option value="2">2/10</option>
+                    <option value="3">3/10</option>
+                    <option value="4">4/10</option>
+                    <option value="5">5/10</option>
+                    <option value="6">6/10</option>
+                    <option value="7">7/10</option>
+                    <option value="8">8/10</option>
+                    <option value="9">9/10</option>
+                    <option value="10">10/10</option>
+                </select>
+            </div>
+            <div class="inputzone">
+                <label>Tech Expertise</label>
+                <select name="techexpert" required>
+                    <option value="0">0/10</option>
+                    <option value="1">1/10</option>
+                    <option value="2">2/10</option>
+                    <option value="3">3/10</option>
+                    <option value="4">4/10</option>
+                    <option value="5">5/10</option>
+                    <option value="6">6/10</option>
+                    <option value="7">7/10</option>
+                    <option value="8">8/10</option>
+                    <option value="9">9/10</option>
+                    <option value="10">10/10</option>
+                </select>
+            </div>
+        </div>
+        <input type="submit" value="Publish Persona"/>
+    </div>
+
+
+    </form>
+</div>
+
+{% endblock %}
+

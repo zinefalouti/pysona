@@ -1,0 +1,105 @@
+{% extends "core/layout.html" %}
+{% load static %}
+
+
+{% block content %}
+<h1>Latest Created Projects: </h1>
+<div class="row">
+   <div class="col-12 col-lg-8">
+      <div class="row">
+      {% if projects %} 
+      {% for project in projects %}
+          <div class="col-12 col-md-6">
+           <div class="projectblock" style="border-left:6px solid #000;">
+                <img src="{% static 'images/projecticon.png' %}" alt="{{project.title}}"/>
+                <h5>Project</h5>
+                <h3>{{ project.title }}</h3>
+                <a href="{% url 'projectsingle' id=project.id %}">View Project</a>
+                <div class="pedit">
+                    <a href="{% url 'projectsingle' id=project.id %}"><img src="{% static 'images/edit.png' %}" alt="Edit Project"/></a>
+                </div>
+            </div>
+           </div>
+      {% endfor %}
+      {% else %}
+      <div class="col-12">
+          <div class="pwidget">
+              <img src="{% static 'images/oops.png' %}" alt="Oops" class="oops" style="width:150px;"/>
+              <h1><b>Sorry!</b></h1>
+              You have no projects for the moment. Why don't you <a href="{% url 'addproject' %}">Create One?</a>
+          </div>
+       </div>
+       {% endif %}
+      </div>
+
+      <h1 style="margin-top:40px;">Latest Created Personas: </h1>
+      <div class="row">
+      {% if personas %}
+      {% for persona in personas %}
+        <div class="col-12 col-md-4">
+            <div class="pwidget" style="border-left:6px solid #000;">
+                {% if persona.thumbnail %}
+                <img src="{{ persona.thumbnail.url }}" alt="Persna Thumbnail" class="personathumb"/>
+                {% else %}
+                <img src="{% static 'images/profile.jpg' %}" alt="Persona Thumbnail" class="personathumb"/>
+                {% endif %}
+                <h4>Persona</h4>
+                <h2>{{persona.name}}</h2>
+                <a href="{% url 'personasingle' id=persona.id %}">View Persona</a>
+                <div class="pedit">
+                    <a href="{% url 'personasingle' id=persona.id %}"><img src="{% static 'images/edit.png' %}" alt="Edit Persona"/></a>
+                </div>
+            </div>
+        </div>
+      {% endfor %}
+      {% else %}
+      <div class="col-12">
+          <div class="pwidget">
+              <img src="{% static 'images/oops.png' %}" alt="Oops" class="oops" style="width:150px;"/>
+              <h1><b>Sorry!</b></h1>
+              You have no personas for the moment. Why don't you <a href="{% url 'addpersona' %}">Create One?</a>
+          </div>
+       </div>
+      {% endif %}
+
+      </div>
+   </div>
+   <div class="col-12 col-lg-4">
+       <div class="block" style="border-right:6px solid #000;">
+          <label>Total Projects Created:</label>
+          <h2><span>{{totalp}}</span> Projects</h2>
+          <hr/>
+          <label>Total Personas Created:</label>
+          <h2><span>{{totalpr}}</span> Personas</h2>
+          <hr/>
+          <label>Total Persona Evaluations:</label>
+          <h2><span>{{totala}}</span> Scores</h2>
+        </div>
+      {% if assigns %}
+      <div class="block" style="padding-top:20px; padding-bottom:20px; border-right:6px solid #000;">
+           <h3>Latest Scored Personas:<h3>
+      {% for assign in assigns %}
+           <div class="pwidgetmin">
+                {% if assign.persona.thumbnail %}
+                  <img src="{{assign.persona.thumbnail.url}}" alt="{{assign.persona.name}}'s thumbnail" class="personathumbmin"/>
+                {% else %}
+                  <img src="{% static 'images/profile.jpg' %}" alt="{{assign.persona.name}}'s thumbnail" class="personathumbmin"/>
+                {% endif %}
+                <div class="score" style="text-align:left; margin-left:20px;">
+                    <h6>{{assign.persona.name}}</h6>
+                    <h2>Scored: <span>{{assign.score}}/10</span></h2>
+                </div>
+            </div>
+      {% endfor %}
+      </div>
+      {% else %}
+      <div class="pwidget">
+              <img src="{% static 'images/oops.png' %}" alt="Oops" class="oops" style="width:150px;"/>
+              <h1><b>Sorry!</b></h1>
+              You haven't evaluated in personas' UX with your projects yet.</a>
+       </div>
+       {% endif %}
+   </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,254 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+        <title>Pysona</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+        <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+   </head>
+   <body>
+       <div class="hero">
+          <div class="container">
+             <div class="row">
+                 <div class="col-lg-2 col-6">
+                    <img src="{% static 'images/logo.png' %}" alt="Pysona Logo" class="logo"/>
+                 </div>
+                 <!-- Desktop Menu -->
+                 <div class="col-lg-8 hidden-sm heromenu d-none d-lg-flex">
+                    <nav>
+                       <ul>
+                          <li>
+                             <a href="#about">About</a>
+                          </li>
+                          <li>
+                             <a href="#features">Features</a>
+                          </li>
+                          <li>
+                             <a href="#personas">Personas</a>
+                          </li>
+                          <li>
+                             <a href="#projects">Projects</a>
+                          </li>
+                       </ul>
+                    </nav>
+                 </div>
+                 <div class="col-lg-2 d-none d-lg-flex">
+                    <a href="{% url 'login' %}"><button>Start Now</button></a>
+                 </div>
+                 <div class="col-6 d-lg-none">
+                     <a href="#" class="hamburger-toggle"><img src="{% static 'images/hamburger.png' %}" alt="Mobile Menu" class="hamburger"/></a>
+                 </div>
+             </div>
+
+             <!-- Hero Area Starts Here -->
+             <div class="row">
+                <div class="col-12">
+                   <div class="heromid">
+                      <h1><span>Pysona: </span>Simplify Your <span>UX Research </span>Journey</h1>
+                      <p>
+                        Simplify UX research with Pysona. Create personas, assign them to projects, and track their impact effortlessly.
+                      </p>
+                      <div class="heroaction">
+                        <a href="{% url 'login' %}"><button class="buttonsec">Login</button></a>
+                        <a href="{% url 'signup' %}"><button>Register</button></a>
+                      </div>
+                      <img src="{% static 'images/dashboards.png' %}" alt="Pysona Dashboards" class="dashboards"/>
+                   </div>
+                </div>
+             </div>
+     
+          </div>
+       </div>
+
+       <!-- Mobile Menu (Hidden by default) -->
+       <div class="mobile-menu d-lg-none d-none">
+         <button class="close-menu">X</button>
+         <nav>
+             <ul>
+                 <li>
+                     <a href="#about">About</a>
+                 </li>
+                 <li>
+                     <a href="#features">Features</a>
+                 </li>
+                 <li>
+                     <a href="#personas">Personas</a>
+                 </li>
+                 <li>
+                     <a href="#projects">Projects</a>
+                 </li>
+             </ul>
+         </nav>
+     </div>
+
+
+
+     <!-- About Section -->
+
+     <div class="container" id="about">
+         <div class="row">
+            <div class="col-12">
+               <div class="about">
+                  <h1>Why <span>Pysona?</span></h1>
+                  <p>
+                     Pysona is your tool for simplifying UX research. Created for designers and researchers, 
+                     Pysona lets you create detailed user personas, assign them to projects, and evaluate 
+                     their performance with scoring tools. Whether you're refining a single project or managing 
+                     multiple, Pysona streamlines the process, empowering you to focus on crafting exceptional 
+                     user experiences.
+                  </p>
+                  <img src="{% static 'images/about.png'  %}" alt="Pysona Examples"/>
+               </div>
+            </div>
+         </div>
+     </div>
+
+     <!-- Register Section -->
+
+     <div class="container">
+       <div class="registeract">
+          <div class="row">        
+              <div class="col-12 col-lg-8">
+                 <h1>Why don’t you try it now?</h1>
+                 <p>Create your Pysona account.</p>
+                 <div class="registerfoot">
+                    <a href="{% url 'signup' %}"><button>Register</button></a>
+                    <img src="{% static 'images/regarrow.png' %}" alt="Register Arrow" class="regarrow d-none d-lg-inline"/>
+                 </div>
+              </div>
+              <div class="d-none d-lg-flex col-lg-4 d-flex flex-row-reverse">
+                 <img src="{% static 'images/regicon.png' %}" alt="Pysona Register Icon"/>
+              </div>
+           </div>
+        </div>
+     </div>
+     
+     <!-- Features Section -->
+
+     <div class="container">
+        <div class="row">
+            <div class="col-12">
+               <div class="about" id="features">
+                  <h1>Perks of <span>Pysona</span></h1>
+                  <p>Discover the key benefits that make Pysona the perfect tool for simplifying your UX research.</p>
+               </div>
+            </div>
+            <!-- 3 Blocks -->
+            <div class="col-12 col-md-4 d-flex">
+               <div class="feature">
+                  <img src="{% static 'images/f1.png' %}" alt="Speed Feature"/>
+                  <h2>Speed</h2>
+                  <p>Accelerate your UX research with an intuitive platform 
+                     that streamlines persona creation and project assignment.</p>
+
+                  <a href="{% url 'signup' %}"><img src="{% static 'images/minbutton.png' %}" alt="Button" class="minbutton"/></a>
+               </div>
+            </div>
+            <div class="col-12 col-md-4 d-flex">
+               <div class="feature">
+                  <img src="{% static 'images/f2.png' %}" alt="Simplicity Feature"/>
+                  <h2>Simplicity</h2>
+                  <p>Easily manage personas and projects in one place, 
+                     without the hassle of complex tools or processes.</p>
+
+                  <a href="{% url 'signup' %}"><img src="{% static 'images/minbutton.png' %}" alt="Button" class="minbutton"/></a>
+               </div>
+            </div>
+            <div class="col-12 col-md-4 d-flex">
+               <div class="feature">
+                  <img src="{% static 'images/f3.png' %}" alt="Insight Feature"/>
+                  <h2>Insight</h2>
+                  <p>Make data-driven decisions with built-in scoring tools 
+                     that help you evaluate persona effectiveness in real time.</p>
+
+                  <a href="{% url 'signup' %}"><img src="{% static 'images/minbutton.png' %}" alt="Button" class="minbutton"/></a>
+               </div>
+            </div>
+        </div>
+     </div>
+
+     <!-- Personas Section -->
+     <div class="halfsec" id="personas">
+         <div class="container">
+            <div class="row">
+                  <div class="col-12 col-lg-7 d-flex">
+                     <div class="halfseccontent">
+                        <h1>About <span>Persona</span></h1>
+                        <p>
+                           In the Personas section, users can define and manage personas to represent fictional ux users 
+                           in their projects. Each persona can be assigned to one or multiple projects, providing a clear 
+                           overview of their involvement. Users can also register the persona’s performance in regards to a project.
+                        </p>
+                     </div>
+                  </div>
+                  <div class="col-12 col-lg-5 d-flex">
+                     <img src="{% static 'images/personas.png' %}" alt="Personas"/>
+                  </div>
+            </div>
+         </div>
+     </div>
+
+     <!-- Projects Section -->
+
+     <div class="halfsec" id="projects">
+      <div class="container">
+         <div class="row">
+               <div class="col-12  col-lg-5 d-flex">
+                  <img src="{% static 'images/projects.png' %}" alt="Projects"/>
+               </div>
+               <div class="col-12  col-lg-7 d-flex">
+                  <div class="halfseccontent">
+                     <h1>About <span>Projects</span></h1>
+                     <p>
+                        In the Projects section, users can create and manage individual projects to organize their work. 
+                        Each project allows the assignment of relevant personas to represent key roles or viewpoints. 
+                        Additionally, users can link a Figma or Adobe XD board directly to the project, enabling easy 
+                        access to design assets and collaborative tools. This integration helps keep all essential 
+                        resources in one place.
+                     </p>
+                  </div>
+               </div>
+         </div>
+      </div>
+  </div>
+
+  <!-- Footer Section -->
+
+  <div class="footer">
+     <div class="container">
+         <div class="row">
+             <div class="col-12">
+                 <img src="{% static 'images/logolight.png' %}" alt="Pysona Logo Footer"/>
+                 <div>
+                     <a href="{% url 'login' %}"><button class="buttonsec">Login</button></a>
+                     <a href="{% url 'signup' %}"><button>Register</button></a>
+                 </div>
+                 <hr/>
+                 <h4>CS50W Capstone - Pysona by Zine. E. Falouti - 2024</h4>
+             </div>
+         </div>
+     </div>
+  </div>
+
+
+  </body>
+
+
+<script>
+// Hamburger
+document.querySelector('.hamburger-toggle').addEventListener('click', function(event) {
+    event.preventDefault();
+    const mobileMenu = document.querySelector('.mobile-menu');
+    mobileMenu.classList.toggle('d-none'); 
+});
+
+document.querySelector('.close-menu').addEventListener('click', function() {
+    const mobileMenu = document.querySelector('.mobile-menu');
+    mobileMenu.classList.add('d-none'); 
+});
+
+</script>
+
+</html>
