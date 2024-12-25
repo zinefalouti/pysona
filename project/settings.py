@@ -28,9 +28,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*.vercel.app', 'localhost', '127.0.0.1', 'pysona.vercel.app']
 
+
 # Application definition
 
 INSTALLED_APPS = [
+    "whitenoise.noserver_nostatic"
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -89,8 +91,6 @@ DATABASES = {
 }
 
 
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -128,6 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "/static/"
+STATIC_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -138,7 +139,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #For thumbnails and image upload
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+
 
 
