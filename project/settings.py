@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = "project.urls"
@@ -75,11 +77,17 @@ WSGI_APPLICATION = "project.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',  # Use the database name
+        'USER': 'postgres.nhzyxhqzwvjofsfmbdhy',  # Use your user
+        'PASSWORD': 'CIL3j13XAUpzAsFQ',  # Use your password here
+        'HOST': 'aws-0-eu-central-1.pooler.supabase.com',  # Host URL
+        'PORT': '6543',  # Port number
     }
 }
+
+
 
 
 # Password validation
@@ -129,3 +137,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #For thumbnails and image upload
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
